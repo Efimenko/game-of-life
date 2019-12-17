@@ -1,6 +1,13 @@
+// @flow
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const App = () => <div>Hi</div>
+import {Grid} from './components/grid'
 
-ReactDOM.render(<App />, document.getElementById('app'))
+const App = () => <Grid rows={10} cols={10} />
+
+const root = document.getElementById('app')
+
+if (root !== null) {
+  ReactDOM.render(<App />, root)
+}

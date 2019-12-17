@@ -1,0 +1,12 @@
+.grid {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid;
+  width: auto;
+}
+
+.col {
+  width: 20px;
+  height: 20px;
+  border: 1px solid
+}
