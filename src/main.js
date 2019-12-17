@@ -1,10 +1,25 @@
 // @flow
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 
 import {Grid} from './components/grid'
 
-const App = () => <Grid rows={10} cols={10} />
+const GRID_ROWS = 30
+const GRID_COLS = 10
+
+const getInitialState = () =>
+  Array(GRID_ROWS)
+    .fill()
+    .map(() =>
+      Array(GRID_COLS)
+        .fill()
+        .map(() => Boolean(Math.round(Math.random())))
+    )
+
+const App = () => {
+  const [gridData, setGridData] = useState(getInitialState)
+  return <Grid gridData={gridData} />
+}
 
 const root = document.getElementById('app')
 

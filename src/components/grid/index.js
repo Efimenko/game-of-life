@@ -1,20 +1,25 @@
 // @flow
 import React from 'react'
+import classNames from 'classnames'
 /**/
 import './style.css'
 
 type GridType = {
-  rows: number,
-  cols: number,
+  gridData: Array<Array<boolean>>,
 }
 
-export const Grid = ({rows, cols}: GridType) => (
+export const Grid = ({gridData}: GridType) => (
   <div className="grid">
-    {Array.from({length: rows}).map((row, rowIndex) => {
+    {gridData.map((row, rowIndex) => {
       return (
         <div key={rowIndex}>
-          {Array.from({length: cols}).map((col, colIndex) => {
-            return <div key={colIndex} className="col"></div>
+          {row.map((col, colIndex) => {
+            return (
+              <div
+                key={colIndex}
+                className={classNames('col', {'col--active': col})}
+              ></div>
+            )
           })}
         </div>
       )
