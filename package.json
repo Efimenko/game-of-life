@@ -2,11 +2,11 @@
   "name": "game-of-life",
   "version": "1.0.0",
   "description": "game of life project, built on react, used flow and jest",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html",
-    "clear": "rm -rf ./dist"
+    "start": "parcel src/index.html",
+    "clear": "rm -rf dist"
   },
   "keywords": [
     "game-of-life",
