@@ -9,7 +9,9 @@
   "globals": {
     "document": true,
     "console": true,
-    "window": true
+    "window": true,
+    "setInterval": true,
+    "clearInterval": true
   },
   "rules": {
     "no-var": "error",

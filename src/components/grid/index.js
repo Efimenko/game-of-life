@@ -4,11 +4,11 @@ import classNames from 'classnames'
 /**/
 import './style.css'
 
-type GridType = {
+type GridData = {
   gridData: Array<Array<boolean>>,
 }
 
-export const Grid = ({gridData}: GridType) => (
+export const Grid = ({gridData}: GridData) => (
   <div className="grid">
     {gridData.map((row, rowIndex) => {
       return (

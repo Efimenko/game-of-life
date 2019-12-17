@@ -1,23 +1,24 @@
-// @flow
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 
 import {Grid} from './components/grid'
-
-const GRID_ROWS = 30
-const GRID_COLS = 10
-
-const getInitialState = () =>
-  Array(GRID_ROWS)
-    .fill()
-    .map(() =>
-      Array(GRID_COLS)
-        .fill()
-        .map(() => Boolean(Math.round(Math.random())))
-    )
+import {TICK} from './config'
+import {getInitialState, updateStateBaseOnPrevState} from './data-generate'
 
 const App = () => {
   const [gridData, setGridData] = useState(getInitialState)
+
+  /* Run update grid after mount with TICK delay */
+  useEffect(() => {
+    const intervalId = setInterval(
+      () => setGridData(updateStateBaseOnPrevState),
+      TICK
+    )
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
+
   return <Grid gridData={gridData} />
 }
 
