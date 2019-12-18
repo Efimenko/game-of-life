@@ -11,7 +11,12 @@
     "console": true,
     "window": true,
     "setInterval": true,
-    "clearInterval": true
+    "clearInterval": true,
+    "module": true,
+    "test": true,
+    "expect": true,
+    "describe": true,
+    "it": true
   },
   "rules": {
     "no-var": "error",

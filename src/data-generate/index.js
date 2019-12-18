@@ -1,11 +1,11 @@
 // @flow
-import {GRID_ROWS, GRID_COLS, NEIGHBORS_COORDINATES} from './config'
+import {GRID_ROWS, GRID_COLS, NEIGHBORS_COORDINATES} from '../config'
 import {
   type GetLiveNeighborsCountFn,
   type GetNewStateForColFn,
   type GetInitialStateFn,
   type UpdateStateBaseOnPrevStateFn,
-} from './types'
+} from '../types'
 
 const getLiveNeighborsCount: GetLiveNeighborsCountFn = ({
   state,
@@ -16,7 +16,10 @@ const getLiveNeighborsCount: GetLiveNeighborsCountFn = ({
     ([x, y]) => state[rowIndex + x] && state[rowIndex + x][colIndex + y]
   ).filter((col) => col).length
 
-const getNewStateForCol: GetNewStateForColFn = ({col, liveNeighborsCount}) =>
+export const getNewStateForCol: GetNewStateForColFn = ({
+  col,
+  liveNeighborsCount,
+}) =>
   col
     ? liveNeighborsCount <= 3 && liveNeighborsCount >= 2
     : liveNeighborsCount === 3

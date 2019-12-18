@@ -4,7 +4,7 @@
   "description": "game of life project, built on react, used flow and jest",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "parcel src/index.html",
     "clear": "rm -rf dist",
     "flow": "flow"
@@ -23,11 +23,13 @@
     "@babel/preset-flow": "^7.7.4",
     "@babel/preset-react": "^7.6.3",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
     "eslint": "^6.6.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.2.0",
     "flow-bin": "^0.114.0",
+    "jest": "^24.9.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.18.2"
   },
