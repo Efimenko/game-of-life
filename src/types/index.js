@@ -1,3 +1,4 @@
+// @flow
 export type GridData = Array<Array<boolean>>
 
 export type GetLiveNeighborsCountFn = ({

@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import {Grid} from './components/grid'
 import {TICK} from './config'
 import {getInitialState, updateStateBaseOnPrevState} from './data-generate'
+import './style.css'
 
 const App = () => {
   const [gridData, setGridData] = useState(getInitialState)
@@ -20,7 +21,11 @@ const App = () => {
     }
   }, [])
 
-  return <Grid gridData={gridData} />
+  return (
+    <div className="wrapper">
+      <Grid gridData={gridData} />
+    </div>
+  )
 }
 
 const root = document.getElementById('app')
