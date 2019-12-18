@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom'
 /**/
 import {Grid} from './components/grid'
 import {TICK, GRID_ROWS, GRID_COLS} from './config'
-import {getInitialState, updateStateBaseOnPrevState} from './data-generate'
+import {
+  getInitialState,
+  updateStateBaseOnPrevState,
+} from './data-generate/index'
 import './style.css'
 
 const App = () => {
