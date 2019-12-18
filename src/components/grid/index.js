@@ -2,13 +2,14 @@
 import React from 'react'
 import classNames from 'classnames'
 /**/
+import {type GridData} from '../../types'
 import './style.css'
 
-type GridData = {
-  gridData: Array<Array<boolean>>,
+type PropsT = {
+  gridData: GridData,
 }
 
-export const Grid = ({gridData}: GridData) => (
+export const Grid = ({gridData}: PropsT) => (
   <div className="grid">
     {gridData.map((row, rowIndex) => {
       return (

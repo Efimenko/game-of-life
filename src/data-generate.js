@@ -1,20 +1,13 @@
 // @flow
 import {GRID_ROWS, GRID_COLS, NEIGHBORS_COORDINATES} from './config'
+import {
+  type GetLiveNeighborsCountFn,
+  type GetNewStateForColFn,
+  type GetInitialStateFn,
+  type UpdateStateBaseOnPrevStateFn,
+} from './types'
 
-type GridData = Array<Array<boolean>>
-
-type GetLiveNeighborsCountType = ({
-  state: GridData,
-  rowIndex: number,
-  colIndex: number,
-}) => number
-
-type GetNewStateForColType = ({
-  col: boolean,
-  liveNeighborsCount: number,
-}) => boolean
-
-const getLiveNeighborsCount: GetLiveNeighborsCountType = ({
+const getLiveNeighborsCount: GetLiveNeighborsCountFn = ({
   state,
   rowIndex,
   colIndex,
@@ -23,12 +16,12 @@ const getLiveNeighborsCount: GetLiveNeighborsCountType = ({
     ([x, y]) => state[rowIndex + x] && state[rowIndex + x][colIndex + y]
   ).filter((col) => col).length
 
-const getNewStateForCol: GetNewStateForColType = ({col, liveNeighborsCount}) =>
+const getNewStateForCol: GetNewStateForColFn = ({col, liveNeighborsCount}) =>
   col
     ? liveNeighborsCount <= 3 && liveNeighborsCount >= 2
     : liveNeighborsCount === 3
 
-export const getInitialState: () => GridData = () =>
+export const getInitialState: GetInitialStateFn = () =>
   Array(GRID_ROWS)
     .fill()
     .map(() =>
@@ -37,7 +30,9 @@ export const getInitialState: () => GridData = () =>
         .map(() => Boolean(Math.round(Math.random())))
     )
 
-export const updateStateBaseOnPrevState: (GridData) => GridData = (prevState) =>
+export const updateStateBaseOnPrevState: UpdateStateBaseOnPrevStateFn = (
+  prevState
+) =>
   prevState.map((row, rowIndex) =>
     row.map((col, colIndex) => {
       const liveNeighborsCount = getLiveNeighborsCount({
