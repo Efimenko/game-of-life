@@ -2,6 +2,7 @@ import {
   getNewStateForCol,
   getLiveNeighborsCount,
   getInitialState,
+  updateStateBaseOnPrevState,
 } from './index'
 
 describe('getNewStateForCol function', () => {
@@ -69,5 +70,67 @@ describe('getInitialState function', () => {
         expect(col).toBe.boolean
       })
     })
+  })
+})
+
+describe('updateStateBaseOnPrevState function', () => {
+  it('Should satisfy next rule: Any live cell with fewer than two live neighbours dies (underpopulation)', () => {
+    const state = [
+      [false, true, false],
+      [false, false, true],
+      [false, false, false],
+    ]
+    const expectedState = [
+      [false, false, false],
+      [false, false, false],
+      [false, false, false],
+    ]
+
+    expect(updateStateBaseOnPrevState(state)).toEqual(expectedState)
+  })
+
+  it('Should satisfy next rule: Any live cell with two or three live neighbours lives on to the next generation', () => {
+    const state = [
+      [false, true, false],
+      [false, true, true],
+      [false, false, false],
+    ]
+    const expectedState = [
+      [false, true, true],
+      [false, true, true],
+      [false, false, false],
+    ]
+
+    expect(updateStateBaseOnPrevState(state)).toEqual(expectedState)
+  })
+
+  it('Should satisfy next rule: Any live cell with more than three live neighbours dies (overcrowding)', () => {
+    const state = [
+      [true, true, false],
+      [true, true, true],
+      [false, false, false],
+    ]
+    const expectedState = [
+      [true, false, true],
+      [true, false, true],
+      [false, true, false],
+    ]
+
+    expect(updateStateBaseOnPrevState(state)).toEqual(expectedState)
+  })
+
+  it('Should satisfy next rule: Any dead cell with exactly three live neighbours becomes a live cell (reproduction)', () => {
+    const state = [
+      [false, true, false],
+      [true, false, true],
+      [false, false, false],
+    ]
+    const expectedState = [
+      [false, true, false],
+      [false, true, false],
+      [false, false, false],
+    ]
+
+    expect(updateStateBaseOnPrevState(state)).toEqual(expectedState)
   })
 })
