@@ -12,6 +12,9 @@ export type GetNewStateForColFn = ({
   liveNeighborsCount: number,
 }) => boolean
 
-export type GetInitialStateFn = () => GridData
+export type GetInitialStateFn = ({
+  gridRows: number,
+  gridCols: number,
+}) => () => GridData
 
 export type UpdateStateBaseOnPrevStateFn = (GridData) => GridData

@@ -1,5 +1,5 @@
 // @flow
-import {GRID_ROWS, GRID_COLS, NEIGHBORS_COORDINATES} from '../config'
+import {NEIGHBORS_COORDINATES} from '../config'
 import {
   type GetLiveNeighborsCountFn,
   type GetNewStateForColFn,
@@ -24,11 +24,14 @@ export const getNewStateForCol: GetNewStateForColFn = ({
     ? liveNeighborsCount <= 3 && liveNeighborsCount >= 2
     : liveNeighborsCount === 3
 
-export const getInitialState: GetInitialStateFn = () =>
-  Array(GRID_ROWS)
+export const getInitialState: GetInitialStateFn = ({
+  gridRows,
+  gridCols,
+}) => () =>
+  Array(gridRows)
     .fill()
     .map(() =>
-      Array(GRID_COLS)
+      Array(gridCols)
         .fill()
         .map(() => Boolean(Math.round(Math.random())))
     )

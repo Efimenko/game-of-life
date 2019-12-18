@@ -1,4 +1,8 @@
-import {getNewStateForCol, getLiveNeighborsCount} from './index'
+import {
+  getNewStateForCol,
+  getLiveNeighborsCount,
+  getInitialState,
+} from './index'
 
 describe('getNewStateForCol function', () => {
   it('Should return false when col is true and liveNeighborsCount 1', () => {
@@ -43,5 +47,27 @@ describe('getLiveNeighborsCount function', () => {
     expect(getLiveNeighborsCount({state, rowIndex, colIndex})).toBe(
       expectedResult
     )
+  })
+})
+
+describe('getInitialState function', () => {
+  const gridRows = 10
+  const gridCols = 10
+  const initialState = getInitialState({gridRows, gridCols})()
+  it('Should return data with right size', () => {
+    const expectedRowSize = gridRows
+    const expectedColSize = gridCols
+
+    expect(initialState.length).toBe(expectedRowSize)
+    initialState.forEach((row) => {
+      expect(row.length).toBe(expectedColSize)
+    })
+  })
+  it('Should contains boolean values in cols', () => {
+    initialState.forEach((row) => {
+      row.forEach((col) => {
+        expect(col).toBe.boolean
+      })
+    })
   })
 })

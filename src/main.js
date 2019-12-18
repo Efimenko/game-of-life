@@ -3,12 +3,14 @@ import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 
 import {Grid} from './components/grid'
-import {TICK} from './config'
+import {TICK, GRID_ROWS, GRID_COLS} from './config'
 import {getInitialState, updateStateBaseOnPrevState} from './data-generate'
 import './style.css'
 
 const App = () => {
-  const [gridData, setGridData] = useState(getInitialState)
+  const [gridData, setGridData] = useState(
+    getInitialState({gridRows: GRID_ROWS, gridCols: GRID_COLS})
+  )
 
   /* Run update grid after mount with TICK delay */
   useEffect(() => {
