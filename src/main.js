@@ -16,6 +16,7 @@ const App = () => {
       () => setGridData(updateStateBaseOnPrevState),
       TICK
     )
+    /* Clear interval on unmount app */
     return () => {
       clearInterval(intervalId)
     }
