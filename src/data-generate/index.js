@@ -7,7 +7,7 @@ import {
   type UpdateStateBaseOnPrevStateFn,
 } from '../types'
 
-const getLiveNeighborsCount: GetLiveNeighborsCountFn = ({
+export const getLiveNeighborsCount: GetLiveNeighborsCountFn = ({
   state,
   rowIndex,
   colIndex,
